@@ -1,0 +1,56 @@
+{%  extends "layout.html" %}
+
+{% block title %}
+Add
+{% endblock %}
+
+{% block main %}
+
+    <!-- creates aesthetic spacing from top if error is shown -->
+    {%  if flag == True %}
+        <br>
+    {% endif %}
+
+    <!-- add form -->
+    <form action="/add" method="post">
+
+        <!-- top text -->
+        <p id="add_title">Add to:</p>
+
+        <!-- clear any floats above -->
+        <div class="clr"></div>
+
+        <!-- the dropdown select menu to let the user choose which set they want to add to -->
+        <select class="custom-select" id="add_select_menu" name="set">
+                <option selected disabled>Select a set to add to</option>
+            {% for title in titles %}
+                <option>{{ title[1] }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- the flashcard -->
+        <div class="flashcard">
+            <!-- term div -->
+            <div class="term">
+                <label class="label">Term
+                    <input autocomplete="off" class="flashcard_input" name="term"/>
+                </label>
+            </div>
+
+            <!-- definition div -->
+            <div class="definition">
+                <label class="label">Definition
+                    <input autocomplete="off" class="flashcard_input" name="definition"/>
+                </label>
+            </div>
+        </div>
+
+        <!-- clear any floats above -->
+        <div class="clr"></div>
+
+        <!-- add button -->
+        <button class="btn btn-primary" type="submit">Add</button>
+
+    </form>
+
+{% endblock %}

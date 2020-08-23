@@ -1,0 +1,69 @@
+{%  extends "layout.html" %}
+
+{% block title %}
+Study
+{% endblock %}
+
+{% block main %}
+
+<!-- top row including back button, title of set, and delete set button -->
+<div id="study_header">
+
+    <!-- back button-->
+    <button onclick="goBack()" type="button" class="btn btn-outline-secondary" id="back">Back</button>
+
+    <!-- title of current set being displayed -->
+    <h1 id="title">{{ set_title }}</h1>
+
+    <!-- click to delete set being displayed -->
+    <div class="change_flashcard" id="delete">
+        <span><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+              <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+        </svg><p>Delete set</p></span>
+    </div>
+</div>
+
+<!-- An invisible form. study.js will submit this form to /delete -->
+<form id="study_form" action="/delete" method="post">
+
+    <!-- study.js will fill the value field of this input -->
+    <input id="study_input" name="delete_set">
+
+</form>
+
+<!-- line break -->
+<br>
+<br>
+
+<!-- click to toggle term visibility -->
+<div type="button" class="btn btn-outline-secondary" id="term_visibility">Hide Terms</div>
+
+<!-- click to toggle definition visibility -->
+<div type="button" class="btn btn-outline-secondary" id="definition_visibility">Hide Definitions</div>
+
+<!-- list of all the flashcards for the set selected -->
+<ul>
+    {% for input in inputs %}
+    <!-- the flashcard list element -->
+    <li class="flashcard">
+
+        <!-- term div -->
+        <div class="term">
+            <label class="label">Term
+                <input readonly class="flashcard_input term_study_input" value="{{ input[2] }}"/>
+            </label>
+        </div>
+
+        <!-- definition div -->
+        <div class="definition">
+            <label class="label">Definition
+                <input readonly class="flashcard_input definition_study_input" value="{{ input[3] }}"/>
+            </label>
+        </div>
+
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

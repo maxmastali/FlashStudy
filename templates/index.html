@@ -1,0 +1,31 @@
+{%  extends "layout.html" %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block main %}
+
+<!-- let user know if they don't have any sets -->
+{% if not titles %}
+    <p id="no_sets">You don't have any sets right now!</p>
+{% endif %}
+
+<!-- Repeat for all of the titles of the current user's sets -->
+{% for title in titles %}
+
+<!-- Display the title of each of the current user's sets (as an input) -->
+<input class="flashcard titles flashcard_index" type="button" value="{{ title[1] }}">
+
+{% endfor %}
+
+<!-- An invisible form. index.js will submit this form -->
+<form id="index_form" action="/study" method="post">
+
+    <!-- index.js will fill the value field of this input -->
+  <input id="index_input" name="index_input_name" type="text">
+
+</form>
+
+{% endblock %}
+

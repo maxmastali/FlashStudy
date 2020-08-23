@@ -1,0 +1,246 @@
+nav .navbar-brand
+{
+    /* size for brand */
+    font-size: 25px;
+}
+
+main .form-control
+{
+    /* center form controls */
+    display: inline-block;
+
+    /* override Bootstrap's 100% width for form controls */
+    width: auto;
+}
+
+main
+{
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
+}
+
+main img
+{
+    /* constrain images on small screens */
+    max-width: 100%;
+}
+
+main
+{
+    /* make main color a light gray */
+    color: #6b6b6b;
+}
+
+/* clear any floats above */
+.clr
+{
+    clear: both;
+}
+
+.change_flashcard
+{
+    /* give entire change_flashcard padding and float it to the right */
+    float: right;
+    padding: 15px;
+}
+
+.change_flashcard:hover
+{
+    /* make items with change_flashcard class black when hovered over */
+    color: #000;
+}
+
+
+.change_flashcard *
+{
+    /* put change_flashcard children on the same line */
+    display: inline-block;
+}
+
+
+.change_flashcard p
+{
+    /* give change_flashcard p elements some padding and font size */
+    padding: 10px;
+    font-size: large;
+}
+
+.flashcard
+{
+    display: inline-block;
+    /* space flashcards from each other */
+    margin: 20px;
+    /* put flashcard in center */
+    alignment: center;
+    /* flashcard dimensions */
+    width: 800px;
+    height: 200px;
+    /* give flashcard a solid light gray border */
+    border: 1px solid #6b6b6b;
+    /* give flashcard a background color of white */
+    background-color: #fff;
+    /* give text within flashcard the light gray used throughout FlashStudy */
+    color: #6b6b6b;
+    /* round the corners */
+    border-radius: 30px;
+    position: relative;
+}
+
+.flashcard_index:first-child
+{
+    /* create a margin-top for the first flashcard displayed on index.html */
+    margin-top: 0px;
+}
+
+/* put term class to the left within the flashcard */
+.flashcard .term
+{
+    position: absolute;
+    top: 65%;
+    left: 5%;
+}
+
+/* put definition class to the right within the flashcard */
+.flashcard .definition
+{
+    position: absolute;
+    top: 65%;
+    left: 55%;
+}
+
+/* for the flashcards that only have the set title in them */
+.titles
+{
+    font-size: 50px;
+    /* no outline */
+    outline: none;
+}
+
+.label
+{
+    display: inline-block;
+    /* make sure the label is at the very left of the input field */
+    width: 0em;
+}
+
+
+.flashcard_input
+{
+    display: inline-block;
+    /* width of input field */
+    width: 20em;
+    /* positioning of input field */
+    position: relative;
+    top: -3.5em;
+    /* all the flashcard input fields will only have an underlying line */
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    outline: none;
+    /* make input color same as rest of the page */
+    color: #6b6b6b;
+}
+
+#title_input
+{
+    /* float the title block to the left */
+    display: block;
+    text-align: left;
+}
+
+#index_form
+{
+    /* do not display the form on index.html */
+    display: none;
+}
+
+#title
+{
+    /* change title font-size */
+    font-size: 75px;
+}
+
+#study_header
+{
+    /* move the top row of items to the right in study.html */
+    margin-left: 85px;
+}
+
+#study_header *
+{
+    /* all of the study_header children are on the same row */
+    display: inline-block;
+}
+
+#term_visibility
+{
+    /* positioning the term visibility toggle button in study.html */
+    float: left;
+    margin-left: 275px;
+}
+
+#definition_visibility
+{
+    /* positioning the definition visibility toggle button in study.html */
+    float: right;
+    margin-right: 250px;
+}
+
+#study_form
+{
+    /* do not display the form on study.html */
+    display: none;
+}
+
+#back
+{
+    /* positioning the back button in study.html */
+    float: left;
+    margin-top: 20px;
+}
+
+#add_title
+{
+    /* font size of top text on add.html */
+    font-size: 25px;
+    /* positioning of top text on add.html */
+    float: left;
+    margin-left: 375px;
+    margin-top: -25px;
+    margin-bottom: 5px;
+}
+
+#add_select_menu
+{
+    /* width of select menu */
+    width: 300px;
+    /* make option color same as rest of the page */
+    color: #6b6b6b;
+}
+
+#flashstudy
+{
+    /* font in FlashStudy's logo */
+    font-family: "Arial Black", Gadget, sans-serif;
+}
+
+#flash
+{
+    /* color for the "flash" in the FlashStudy logo */
+    color: #cdd92e;
+}
+
+#study
+{
+    /* color for the "study" in the FlashStudy logo */
+    color: #6b6b6b;
+}
+
+#no_sets
+{
+    /* change the font size */
+    font-size: 40px;
+}

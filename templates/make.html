@@ -1,0 +1,276 @@
+{%  extends "layout.html" %}
+
+{% block title %}
+Make
+{% endblock %}
+
+{% block main %}
+
+    <form action="/make" method="post">
+
+        <!-- create space from top -->
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <!-- title input field -->
+        <div id="title_input">
+            <label class="label">Title
+                <input autocomplete="off" class="flashcard_input" name="title"/>
+            </label>
+        </div>
+
+        <!-- clear any floats above-->
+        <div class="clr"></div>
+
+        <!-- list of all the flashcards -->
+        <ul>
+            <!-- the flashcard list element -->
+            <li class="flashcard" id="flashcard0">
+
+                <!-- click to remove flashcard -->
+                <div class="change_flashcard" id="remove0">
+                    <span><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-dash-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                    </svg><p>Remove flashcard</p></span>
+                </div>
+
+                <!-- term div -->
+                <div class="term">
+                    <label class="label">Term
+                        <input autocomplete="off" class="flashcard_input" name="term0"/>
+                    </label>
+                </div>
+
+                <!-- definition div -->
+                <div class="definition">
+                    <label class="label">Definition
+                        <input autocomplete="off" class="flashcard_input" name="definition0"/>
+                    </label>
+                </div>
+            </li>
+            <li class="flashcard" id="flashcard1">
+
+                <!-- click to remove flashcard -->
+                <div class="change_flashcard" id="remove1">
+                    <span><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-dash-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                    </svg><p>Remove flashcard</p></span>
+                </div>
+
+                <!-- term div -->
+                <div class="term">
+                    <label class="label">Term
+                        <input autocomplete="off" class="flashcard_input" name="term1"/>
+                    </label>
+                </div>
+
+                <!-- definition div -->
+                <div class="definition">
+                    <label class="label">Definition
+                        <input autocomplete="off" class="flashcard_input" name="definition1"/>
+                    </label>
+                </div>
+             </li>
+            <li class="flashcard" id="flashcard2">
+
+                <!-- click to remove flashcard -->
+                <div class="change_flashcard" id="remove2">
+                    <span><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-dash-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                    </svg><p>Remove flashcard</p></span>
+                </div>
+
+                <!-- term div -->
+                <div class="term">
+                    <label class="label">Term
+                        <input autocomplete="off" class="flashcard_input" name="term2"/>
+                    </label>
+                </div>
+
+                <!-- definition div -->
+                <div class="definition">
+                    <label class="label">Definition
+                        <input autocomplete="off" class="flashcard_input" name="definition2"/>
+                    </label>
+                </div>
+             </li>
+            <li class="flashcard" id="flashcard3">
+
+                <!-- click to remove flashcard -->
+                <div class="change_flashcard" id="remove3">
+                    <span><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-dash-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                    </svg><p>Remove flashcard</p></span>
+                </div>
+
+                <!-- term div -->
+                <div class="term">
+                    <label class="label">Term
+                        <input autocomplete="off" class="flashcard_input" name="term3"/>
+                    </label>
+                </div>
+
+                <!-- definition div -->
+                <div class="definition">
+                    <label class="label">Definition
+                        <input autocomplete="off" class="flashcard_input" name="definition3"/>
+                    </label>
+                </div>
+             </li>
+            <li class="flashcard" id="flashcard4">
+
+                <!-- click to remove flashcard -->
+                <div class="change_flashcard" id="remove4">
+                    <span><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-dash-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                    </svg><p>Remove flashcard</p></span>
+                </div>
+
+                <!-- term div -->
+                <div class="term">
+                    <label class="label">Term
+                        <input autocomplete="off" class="flashcard_input" name="term4"/>
+                    </label>
+                </div>
+
+                <!-- definition div -->
+                <div class="definition">
+                    <label class="label">Definition
+                        <input autocomplete="off" class="flashcard_input" name="definition4"/>
+                    </label>
+                </div>
+             </li>
+            <li class="flashcard" id="flashcard5">
+
+                <!-- click to remove flashcard -->
+                <div class="change_flashcard" id="remove5">
+                    <span><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-dash-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                    </svg><p>Remove flashcard</p></span>
+                </div>
+
+                <!-- term div -->
+                <div class="term">
+                    <label class="label">Term
+                        <input autocomplete="off" class="flashcard_input" name="term5"/>
+                    </label>
+                </div>
+
+                <!-- definition div -->
+                <div class="definition">
+                    <label class="label">Definition
+                        <input autocomplete="off" class="flashcard_input" name="definition5"/>
+                    </label>
+                </div>
+             </li>
+            <li class="flashcard" id="flashcard6">
+
+                <!-- click to remove flashcard -->
+                <div class="change_flashcard" id="remove6">
+                    <span><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-dash-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                    </svg><p>Remove flashcard</p></span>
+                </div>
+
+                <!-- term div -->
+                <div class="term">
+                    <label class="label">Term
+                        <input autocomplete="off" class="flashcard_input" name="term6"/>
+                    </label>
+                </div>
+
+                <!-- definition div -->
+                <div class="definition">
+                    <label class="label">Definition
+                        <input autocomplete="off" class="flashcard_input" name="definition6"/>
+                    </label>
+                </div>
+             </li>
+            <li class="flashcard" id="flashcard7">
+
+                <!-- click to remove flashcard -->
+                <div class="change_flashcard" id="remove7">
+                    <span><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-dash-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                    </svg><p>Remove flashcard</p></span>
+                </div>
+
+                <!-- term div -->
+                <div class="term">
+                    <label class="label">Term
+                        <input autocomplete="off" class="flashcard_input" name="term7"/>
+                    </label>
+                </div>
+
+                <!-- definition div -->
+                <div class="definition">
+                    <label class="label">Definition
+                        <input autocomplete="off" class="flashcard_input" name="definition7"/>
+                    </label>
+                </div>
+             </li>
+            <li class="flashcard" id="flashcard8">
+
+                <!-- click to remove flashcard -->
+                <div class="change_flashcard" id="remove8">
+                    <span><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-dash-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                    </svg><p>Remove flashcard</p></span>
+                </div>
+
+                <!-- term div -->
+                <div class="term">
+                    <label class="label">Term
+                        <input autocomplete="off" class="flashcard_input" name="term8"/>
+                    </label>
+                </div>
+
+                <!-- definition div -->
+                <div class="definition">
+                    <label class="label">Definition
+                        <input autocomplete="off" class="flashcard_input" name="definition8"/>
+                    </label>
+                </div>
+             </li>
+            <li class="flashcard" id="flashcard9">
+
+                <!-- click to remove flashcard -->
+                <div class="change_flashcard" id="remove9">
+                    <span><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-dash-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                      <path fill-rule="evenodd" d="M3.5 8a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.5-.5z"/>
+                    </svg><p>Remove flashcard</p></span>
+                </div>
+
+                <!-- term div -->
+                <div class="term">
+                    <label class="label">Term
+                        <input autocomplete="off" class="flashcard_input" name="term9"/>
+                    </label>
+                </div>
+
+                <!-- definition div -->
+                <div class="definition">
+                    <label class="label">Definition
+                        <input autocomplete="off" class="flashcard_input" name="definition9"/>
+                    </label>
+                </div>
+             </li>
+        </ul>
+
+        <!-- make button -->
+        <button class="btn btn-primary" type="submit">Make</button>
+
+    </form>
+{% endblock %}
