@@ -9,7 +9,7 @@ def find_term(i):
 def find_definition(i):
     return "definition" + str(i)
 
-# Login_required decorator from Harvard CS50x's "Finance" Assignment
+# Login_required decorator which ensures the user is logged in
 def login_required(f):
     """
     Decorate routes to require login.
