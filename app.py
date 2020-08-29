@@ -391,16 +391,6 @@ def make():
             flag = True
             return render_template("make.html", error="You can not have flashcard sets with the same title!", flag=flag)
 
-        # Generate SQL objects (the connection and the cursor) and insert current user's id
-        # and their new flashcard title into table "flashcard_titles"
-        with sqlite3.connect("FlashStudy.db") as conn:
-            c = conn.cursor()
-
-            c.execute("INSERT INTO flashcard_titles (user_id, title) VALUES (?, ?)",
-                      (session["user_id"], title))
-
-            conn.commit()
-
         # Make empty list used in loop below
         inputs = []
 
@@ -438,6 +428,16 @@ def make():
 
         # Clear the inputs list
         inputs.clear()
+
+        # Generate SQL objects (the connection and the cursor) and insert current user's id
+        # and their new flashcard title into table "flashcard_titles"
+        with sqlite3.connect("FlashStudy.db") as conn:
+            c = conn.cursor()
+
+            c.execute("INSERT INTO flashcard_titles (user_id, title) VALUES (?, ?)",
+                      (session["user_id"], title))
+
+            conn.commit()
 
         # Repeat for all 10 flashcards and insert into database
         for i in range(0, 10):
