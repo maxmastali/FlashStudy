@@ -1,0 +1,65 @@
+{%  extends "layout.html" %}
+
+{% block title %}
+Edit
+{% endblock %}
+
+{% block main %}
+
+<form action="/editing" method="post">
+
+    <!-- top row including back button, title of set, and filler space -->
+    <div class="header">
+
+        <!-- back button-->
+        <button onclick="goBack()" type="button" class="btn btn-outline-secondary back">Back</button>
+
+        <!-- title of current set being displayed -->
+        <div class="title">
+
+            <!-- use "&nbsp;" to create a space to separate the <p> tags -->
+            <p>Edit set:&nbsp;</p>
+            <p id="title">{{ set_title }}</p>
+
+        </div>
+
+        <!-- filler space to make the title centered -->
+        <div class="change_flashcard hide">some filler text</div>
+
+    </div>
+
+        <!-- invisible input to send the title input to /editing -->
+        <div class="invisible_form">
+            <input id="edit_set" name="edit_set">
+        </div>
+
+        {% for flashcard in flashcards %}
+            <!-- the flashcard list element -->
+            <li class="flashcard">
+
+                <!-- term div -->
+                <div class="term">
+                    <label class="label">Term
+                        <input autocomplete="off" class="flashcard_input" name="{{ flashcard[2] }}" value="{{ flashcard[2] }}"/>
+                    </label>
+                </div>
+
+                <!-- definition div -->
+                <div class="definition">
+                    <label class="label">Definition
+                        <input autocomplete="off" class="flashcard_input" name="{{ flashcard[3] }}" value="{{ flashcard[3] }}"/>
+                    </label>
+                </div>
+
+            </li>
+        {% endfor %}
+
+        <!-- clear any floats above-->
+        <div class="clr"></div>
+
+        <!-- edit button -->
+        <button id="edit_button" class="btn btn-primary" type="submit">Edit</button>
+
+    </form>
+
+{% endblock %}
