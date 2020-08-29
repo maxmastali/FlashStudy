@@ -144,35 +144,48 @@ main
     color: #6b6b6b;
 }
 
-#title_input
+.invisible_form
 {
-    /* float the title block to the left */
-    display: block;
-    text-align: left;
-}
-
-#index_form
-{
-    /* do not display the form on index.html */
+    /* do not display the form */
     display: none;
 }
 
-#title
+.header
+{
+    /* move the top row of items to the right */
+    margin-left: 85px;
+}
+
+.header *
+{
+    /* all of the header children are on the same row */
+    display: inline-block;
+}
+
+.back
+{
+    /* positioning the back button */
+    float: left;
+    margin-top: 20px;
+}
+
+.title
 {
     /* change title font-size */
     font-size: 75px;
 }
 
-#study_header
+.hide
 {
-    /* move the top row of items to the right in study.html */
-    margin-left: 85px;
+    /* make hidden */
+    visibility: hidden;
 }
 
-#study_header *
+#title_input
 {
-    /* all of the study_header children are on the same row */
-    display: inline-block;
+    /* float the title block to the left */
+    display: block;
+    text-align: left;
 }
 
 #term_visibility
@@ -187,19 +200,6 @@ main
     /* positioning the definition visibility toggle button in study.html */
     float: right;
     margin-right: 250px;
-}
-
-#study_form
-{
-    /* do not display the form on study.html */
-    display: none;
-}
-
-#back
-{
-    /* positioning the back button in study.html */
-    float: left;
-    margin-top: 20px;
 }
 
 #add_title
@@ -243,4 +243,13 @@ main
 {
     /* change the font size */
     font-size: 40px;
+}
+
+#edit
+{
+    /* position the edit set div on study.html */
+    margin-top: -45px;
+    margin-right: 19px;
+    /* move the bottom content up the page */
+    margin-bottom: -50px;
 }

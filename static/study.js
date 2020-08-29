@@ -84,10 +84,20 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById("delete").onclick = function () {
 
         // fill the value of the form input with the title of the set that's displayed on study.html
-        document.getElementById("study_input").value = document.getElementById("title").textContent;
+        document.getElementById("study_delete_input").value = document.getElementById("title").textContent;
 
         // submit the form
-        document.getElementById("study_form").submit();
+        document.getElementById("study_delete_form").submit();
+    };
+
+    // enter function if div with id of "edit" is clicked on
+    document.getElementById("edit").onclick = function () {
+
+        // fill the value of the form input with the title of the set that's displayed on study.html
+        document.getElementById("study_edit_input").value = document.getElementById("title").textContent;
+
+        // submit the form
+        document.getElementById("study_edit_form").submit();
     };
 
 });

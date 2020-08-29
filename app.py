@@ -71,6 +71,37 @@ def add():
             flag = True
             return render_template("add.html", error="Missing definition", flag=flag, titles=titles)
 
+        # Generate SQL objects (the connection and the cursor) and query table "flashcards" for the terms/definitions
+        # for all of the flashcards from the set that the current user selected
+        with sqlite3.connect("FlashStudy.db") as conn:
+            c = conn.cursor()
+
+            c.execute("SELECT term, definition FROM flashcards WHERE user_id = (?) AND title = (?)",
+                      (session["user_id"], set))
+
+            flashcards = c.fetchall()
+
+        # Ensure the terms/definitions being inputted are not already used as a term/definition in the set
+        for i in range(len(flashcards)):
+
+            # Return an error if the term/definition being inputted is already used as a term in the set's ith flashcard
+            if term in flashcards[i][0] or definition in flashcards[i][0]:
+                flag = True
+                return render_template("add.html", error="You can not use the same term/definition twice in a set!",
+                                       flag=flag, titles=titles)
+
+            # Return an error if the term/definition being inputted is already used as a definition in the set's ith flashcard
+            if term in flashcards[i][1] or definition in flashcards[i][1]:
+                flag = True
+                return render_template("add.html", error="You can not use the same term/definition twice in a set!",
+                                       flag=flag, titles=titles)
+
+        # Ensure term and definition being inputted are different
+        if term == definition:
+            flag = True
+            return render_template("add.html", error="You can not use the same term/definition twice in a set!",
+                                   flag=flag, titles=titles)
+
         # Generate SQL objects (the connection and the cursor) and insert current user's id,
         # their new flashcard set title, term, and definition into table "flashcards"
         with sqlite3.connect("FlashStudy.db") as conn:
@@ -370,7 +401,45 @@ def make():
 
             conn.commit()
 
-        # Repeat for all 10 flashcards
+        # Make empty list used in loop below
+        inputs = []
+
+        # Repeat for all 10 flashcards to ensure all the inputs are different
+        for i in range(0, 10):
+
+            # Prep variables to be used throughout loop
+            term = request.form.get(find_term(i))
+            definition = request.form.get(find_definition(i))
+
+            # Continue to the next flashcard if the current flashcard's term input is None
+            # (which also means the current flashcard's definition input is None since inputs/definitions come in pairs)
+            if term == None:
+                continue
+
+            # Ensure the term being inputted hasn't already been used as a either a term or definition
+            # in the creation of this set
+            if term in inputs:
+                flag = True
+                return render_template("make.html", error="You can not use the same term/definition twice in a set!",
+                                       flag=flag)
+
+            # Append the term to list "inputs"
+            inputs.append(term)
+
+            # Ensure the definition being inputted hasn't already been used as a either a term or definition
+            # in the creation of this set
+            if definition in inputs:
+                flag = True
+                return render_template("make.html", error="You can not use the same term/definition twice in a set!",
+                                       flag=flag)
+
+            # Append the definition to list "inputs"
+            inputs.append(definition)
+
+        # Clear the inputs list
+        inputs.clear()
+
+        # Repeat for all 10 flashcards and insert into database
         for i in range(0, 10):
 
             # Prep variables to be used throughout loop
@@ -403,6 +472,123 @@ def make():
 
         # Render "make.html"
         return render_template("make.html")
+
+
+@app.route("/edit", methods=["GET", "POST"])
+@login_required
+def edit():
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+
+        # Prepare variable "edit_set" to be used throughout edit()
+        edit_set = request.form.get("edit_set")
+
+        # Generate SQL objects (the connection and the cursor) and query table "flashcards" for
+        # all of the flashcards from the set the current user wants to edit
+        with sqlite3.connect("FlashStudy.db") as conn:
+            c = conn.cursor()
+
+            c.execute("SELECT * FROM flashcards WHERE user_id = (?) AND title = (?)",
+                      (session["user_id"], edit_set))
+
+            flashcards = c.fetchall()
+
+        # Render edit.html and pass in the set's flashcards and title
+        return render_template("edit.html", flashcards=flashcards, set_title=edit_set)
+
+    # User reached route via GET (as by clicking a link or via direct)
+    else:
+
+        # Redirect user to home page
+        return redirect("/")
+
+@app.route("/editing", methods=["GET", "POST"])
+@login_required
+def editing():
+    # User reached route via POST (as by submitting a form via POST)
+    if request.method == "POST":
+
+        # Prepare variable "edited_set" to be used throughout editing()
+        edited_set = request.form.get("edit_set")
+
+        # Generate SQL objects (the connection and the cursor) and query table "flashcards" for
+        # all of the flashcards from the set the current user is editing
+        with sqlite3.connect("FlashStudy.db") as conn:
+            c = conn.cursor()
+
+            c.execute("SELECT * FROM flashcards WHERE user_id = (?) AND title = (?)",
+                      (session["user_id"], edited_set))
+
+            flashcards = c.fetchall()
+
+        # Make empty list used in loop below
+        inputs = []
+
+        # Loop over all the flashcards in the set that the current user is editing.
+        # Ensure no input is used twice in the newly inputted set
+        for i in range(len(flashcards)):
+
+            # Prepare variables "current_term" and "current_definition" to be used within loop,
+            # and set them to values being inputted in the edit form (take a look at how names are set up in edit.html).
+            current_term = request.form.get(flashcards[i][2])
+            current_definition = request.form.get(flashcards[i][3])
+
+            # Ensure the term being inputted hasn't already been used as either a term or definition
+            # in the new version of this set
+            if current_term in inputs:
+                flag = True
+                return render_template("edit.html", error="You can not use the same term/definition twice in a set!", flashcards=flashcards, set_title=edited_set, flag=flag)
+
+            # Append the term to list "inputs"
+            inputs.append(current_term)
+
+            # Ensure the definition being inputted hasn't already been used as either a term or definition
+            # in the new version of this set
+            if current_definition in inputs:
+                flag = True
+                return render_template("edit.html", error="You can not use the same term/definition twice in a set!", flashcards=flashcards, set_title=edited_set, flag=flag)
+
+            # Append the definition to list "inputs"
+            inputs.append(current_definition)
+
+        # Clear the inputs list
+        inputs.clear()
+
+        # Loop over all the flashcards in the set that the current user is editing.
+        # Update each flashcard in the set being edited.
+        for i in range(len(flashcards)):
+
+            # Prepare variables "past_term" and "past_definition" to be used within loop,
+            # and set them to the set's old flashcard terms/definitions.
+            past_term = flashcards[i][2]
+            past_definition = flashcards[i][3]
+
+            # Prepare variables "current_term" and "current_definition" to be used within loop,
+            # and set them to values being inputted in the edit form (take a look at how names are set up in edit.html).
+            current_term = request.form.get(flashcards[i][2])
+            current_definition = request.form.get(flashcards[i][3])
+
+            # Generate SQL objects (the connection and the cursor) and update the current set's
+            # old terms/definitions to the new terms/definitions being inputted
+            with sqlite3.connect("FlashStudy.db") as conn:
+                c = conn.cursor()
+
+                c.execute("UPDATE flashcards SET term = (?), definition = (?) WHERE term = (?) AND definition = (?) AND user_id = (?) AND title = (?)",
+                          (current_term, current_definition, past_term, past_definition, session["user_id"], edited_set))
+
+                conn.commit()
+
+        # Let user know
+        flash('Successfully edited set "' + edited_set + '"')
+
+        # Redirect user to home page
+        return redirect("/")
+
+    # User reached route via GET (as by clicking a link or via direct)
+    else:
+
+        # Redirect user to home page
+        return redirect("/")
 
 @app.route("/change_password", methods=["GET", "POST"])
 @login_required
