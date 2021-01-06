@@ -551,7 +551,7 @@ def editing():
             # Append the definition to list "inputs"
             inputs.append(current_definition)
 
-        # Clear the inputs list
+        # Clear the inputs list.
         inputs.clear()
 
         # Loop over all the flashcards in the set that the current user is editing.
